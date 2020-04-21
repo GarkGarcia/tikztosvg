@@ -34,8 +34,8 @@ The tikzin(1) fish function renders TikZ diagrams to SVG.
 
 == ENVIRONMENT
 
-*Tikzin* requires _texlive_ and _pdf2svg_ to be installed. Make sure any 
-additional LaTeX packages are installed before using them in a diagram.
+*Tikzin* requires _fish_, _texlive_ and _pdf2svg_ to be installed. Make sure 
+any additional LaTeX packages are installed before using them in a diagram.
 
 == EXIT STATUS
 
