@@ -20,7 +20,7 @@ tikzin [OPTION]... INPUT_PATH
   The file is resolved relative to the working directory.
 
 *-p, --package*=+_PACKAGE_::
-  Include _\usepackage{PACKAGE}_ when rendering the diagram.
+  Include ``\usepackage{_PACKAGE_}`` when rendering the diagram.
 
 *-q, --quiet*::
   Silence application log messages and script warnings.
