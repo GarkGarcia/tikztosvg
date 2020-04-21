@@ -1,4 +1,4 @@
-function tikzoom -a argv
+function tikzin -a argv
     function puts -a prompt msg color
         set_color $color --bold
         printf "[%s]" $prompt
@@ -9,18 +9,10 @@ function tikzoom -a argv
     
     function error -a msg code
         puts "ERROR" "$msg" red
-
-        switch "$code"
-            case 0 ""
-                exit 1
-
-            case *
-                exit $code
-        end
     end
 
     function message -a msg
-        puts "TIKZOOM" "$msg" green
+        puts "TIKZIN" "$msg" green
     end
 
     function create_latex -a input output packages
@@ -39,25 +31,30 @@ function tikzoom -a argv
 
     if test -z ""(command -s xelatex)
         error "xelatex could not be found"
+        return 1
     end
 
     if test -z ""(command -s pdf2svg)
         error "pdf2svg could not be found"
+        return 1
     end
 
     argparse -i h/help q/quiet o/output= p/package=+ -- $argv
     
     if test -n "$_flag_help"
-        man tikzoom
+        man tikzin
+        return 0
     end
     
     switch (count $argv)
         case 0
             error "No input path provided"
+            return 1
         case 1
             set input $argv[1]
         case *
             error "Too many arguments: \""$argv[1..-1]"\""
+            return 1
     end
 
     if test -z "$_flag_output"
@@ -74,13 +71,14 @@ function tikzoom -a argv
         message "Rendering the LaTeX document. . ."
         xelatex -output-directory=$temp_dir "$temp_dir/tmp.tex"
     else
-        xelatex -halt-on-error -output-directory=$temp_dir "$temp_dir/tmp.tex" 1> /dev/null 2>1
+        xelatex -halt-on-error -output-directory=$temp_dir "$temp_dir/tmp.tex" 1> /dev/null 2>&1
     end
 
     set s $status
     if test $s -ne 0
         rm $temp_dir -r
         error "xelatex exited with code $s" $s
+        return $s
     end
     
     if test -z "$_flag_quiet"
@@ -93,6 +91,7 @@ function tikzoom -a argv
     if test $s -ne 0
         rm $temp_dir -r
         error "pdf2svg exited with code $s" $s
+        return $s
     end
     
     if test -z "$_flag_quiet"
