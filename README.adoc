@@ -46,24 +46,26 @@ You could achieve that by runned the following command:
 tikzit -p tikz-cd -p xfrac example.tikz
 ----
 
-The result will be stored in the file `example.svg`:
+The results will be stored in the file `example.svg`:
 
 image::example.svg[]
 
 == Authors
 
-*Tikzin* was written by Pablo Emílio Escobar Gavira <pablo-escobar@riseup.net>.
+*Tikzin* was written by 
+mailto:pablo-escobar@riseup.net[Pablo Emílio Escobar Gavira].
 
 *TeX Live* has been developed since 1996 by collaboration between the TeX user 
 groups. TeX Live was originally perpetrated by Sebastian Rahtz. Present 
 miscreants include Akira Kakuto, Karl Berry, Luigi Scarso, Mojca Miklavec, 
 Norbert Preining, Reinhard Kotucha, Siep Kroonenberg, and a cast of thousands.
 
-*pdf2svg* was written by David Barton <davebarton@cityinthesky.co.uk> and 
-Matthew Flaschen <matthew.flaschen@gatech.edu>.
+*pdf2svg* was written by mailto:davebarton@cityinthesky.co.uk[David Barton] and 
+mailto:matthew.flaschen@gatech.edu[Matthew Flaschen].
 
 == License
 
-(C) 2020 Pablo Emílio Escobar Gaviria
+(C) 2020 Pablo Emílio Escobar Gaviria.
+
 Free use of this software is granted under the terms of the GPL-3.0 License.
 

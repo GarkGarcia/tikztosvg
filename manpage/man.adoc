@@ -66,6 +66,6 @@ Matthew Flaschen <matthew.flaschen@gatech.edu>.
 
 == COPYING
 
-Copyright \(C) 2020 Pablo Emílio Escobar Gaviria
+Copyright \(C) 2020 Pablo Emílio Escobar Gaviria.
 Free use of this software is granted under the terms of the GPL-3.0 License.
 
