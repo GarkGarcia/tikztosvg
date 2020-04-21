@@ -1,22 +1,18 @@
 = tikzin(1)
-:doctype: manpage
-:man manual: Tikzin Manual
-:man source: Tikzin 0.1.0
-:page-layout: base
+Pablo Emílio Escobar Gaviria <pablo-escobar@riseup.net>
+:imagesdir: example
 
-== NAME
+The `tikzin(1)` command renders TikZ diagrams to SVG, using 
+https://fishshell.com/[`fish`], https://tug.org/texlive/[`texlive`] and 
+https://github.com/dawbarton/pdf2svg[`pdf2svg`].
 
-tikzin - Renders TikZ diagrams to SVG.
+== Usage
 
-== SYNOPSIS
+----
+tikzin [OPTION]... INPUT_PATH
+----
 
-*tikzin* [_OPTION_]... _INPUT_PATH_
-
-== DESCRIPTION
-
-The tikzin(1) command renders TikZ diagrams to SVG.
-
-== OPTIONS
+=== Options
 
 *-o, --output*=_OUTPUT_PATH_::
   Write output to file _OUTPUT_PATH_.
@@ -32,23 +28,29 @@ The tikzin(1) command renders TikZ diagrams to SVG.
 *-h, --help*::
   Print a help message.
 
-== ENVIRONMENT
+== Example
 
-*Tikzin* requires _fish_, _texlive_ and _pdf2svg_ to be installed. Make sure 
-any additional LaTeX packages are installed before using them in a diagram.
+Let's say you want to convert the file `exemple.tikz` to SVG:
 
-== EXIT STATUS
+[source, latex]
+----
+\begin{tikzcd}
+    G \arrow[r, "\varphi"] \arrow[d, "\psi"', two heads] & H \\
+    \sfrac{G}{\ker \varphi} \arrow[ru, dotted]           &  
+\end{tikzcd}
+----
 
-*0*::
-  Success.
+You could achieve that by runned the following command:
 
-*1*::
-  Failure (syntax or usage error; configuration error).
+----
+tikzit -p tikz-cd -p xfrac example.tikz
+----
 
-*n*::
-  Failure (document processing failure).
+The result will be stored in the file `example.svg`:
 
-== AUTHORS
+image::example.svg[]
+
+== Authors
 
 *Tikzin* was written by Pablo Emílio Escobar Gavira <pablo-escobar@riseup.net>.
 
@@ -60,12 +62,8 @@ Norbert Preining, Reinhard Kotucha, Siep Kroonenberg, and a cast of thousands.
 *pdf2svg* was written by David Barton <davebarton@cityinthesky.co.uk> and 
 Matthew Flaschen <matthew.flaschen@gatech.edu>.
 
-== RESOURCES
+== License
 
-*Git source repository on GitHub:* https://github.com/GarkGarcia/tikzin
-
-== COPYING
-
-Copyright \(C) 2020 Pablo Emílio Escobar Gaviria
+(C) 2020 Pablo Emílio Escobar Gaviria
 Free use of this software is granted under the terms of the GPL-3.0 License.
 

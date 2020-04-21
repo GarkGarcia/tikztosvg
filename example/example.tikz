@@ -1,0 +1,4 @@
+\begin{tikzcd}
+G \arrow[r, "\varphi"] \arrow[d, "\psi"', two heads] & H \\
+\sfrac{G}{\ker \varphi} \arrow[ru, dotted]           &  
+\end{tikzcd}

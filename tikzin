@@ -17,10 +17,10 @@ function message -a msg
     puts "TIKZIN" "$msg" green
 end
 
-function create_latex -a input output packages
+function create_latex -a input output
     echo "\documentclass[crop,tikz,multi=false]{standalone}" > $output
     
-    for package in $packages
+    for package in $argv
         echo "\usepackage{$package}" >> $output
     end
     
