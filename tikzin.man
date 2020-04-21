@@ -100,4 +100,4 @@ Matthew Flaschen <\c
 .SH "COPYING"
 .sp
 Copyright (C) 2020 Pablo Emílio Escobar Gaviria
-Free use of this software is granted under the terms of the GPL\-2 License.
+Free use of this software is granted under the terms of the GPL\-3.0 License.
