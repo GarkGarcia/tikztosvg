@@ -1,0 +1,103 @@
+'\" t
+.\"     Title: tikzin
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 1.5.8
+.\"      Date: 2020-04-21
+.\"    Manual: Tikzin Manual
+.\"    Source: Tikzin 0.1.0
+.\"  Language: English
+.\"
+.TH "TIKZIN" "1" "2020-04-21" "Tikzin 0.1.0" "Tikzin Manual"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+tikzin \- Renders TikZ diagrams to SVG.
+.SH "SYNOPSIS"
+.sp
+\fBasciit\fP [\fIOPTION\fP]... \fIINPUT_PATH\fP
+.SH "DESCRIPTION"
+.sp
+The tikzin(1) fish function renders TikZ diagrams to SVG.
+.SH "OPTIONS"
+.sp
+\fB\-o, \-\-output\fP=\fIOUTPUT_PATH\fP
+.RS 4
+Write output to file \fIOUTPUT_PATH\fP.
+Defaults to the base name of the input file suffixed with \fI.svg\fP extension.
+The file is resolved relative to the working directory.
+.RE
+.sp
+\fB\-p, \-\-package\fP=+\fIPACKAGE\fP
+.RS 4
+Include \fI\(rsusepackage{PACKAGE}\fP when rendering the diagram.
+.RE
+.sp
+\fB\-q, \-\-quiet\fP
+.RS 4
+Silence application log messages and script warnings.
+.RE
+.sp
+\fB\-h, \-\-help\fP
+.RS 4
+Print a help message.
+.RE
+.SH "ENVIRONMENT"
+.sp
+\fBTikzin\fP requires \fItexlive\fP and \fIpdf2svg\fP to be installed. Make sure any
+additional LaTeX packages are installed before using them in a diagram.
+.SH "EXIT STATUS"
+.sp
+\fB0\fP
+.RS 4
+Success.
+.RE
+.sp
+\fB1\fP
+.RS 4
+Failure (syntax or usage error; configuration error).
+.RE
+.sp
+\fBn\fP
+.RS 4
+Failure (document processing failure).
+.RE
+.SH "AUTHORS"
+.sp
+\fBTikzin\fP was written by Pablo Emílio Escobar Gavira <\c
+.MTO "pablo\-escobar\(atriseup.net" "" ">."
+.sp
+\fBTeX Live\fP has been developed since 1996 by collaboration between the TeX user
+groups. TeX Live was originally perpetrated by Sebastian Rahtz. Present
+miscreants include Akira Kakuto, Karl Berry, Luigi Scarso, Mojca Miklavec,
+Norbert Preining, Reinhard Kotucha, Siep Kroonenberg, and a cast of thousands.
+.sp
+\fBpdf2svg\fP was written by David Barton <\c
+.MTO "davebarton\(atcityinthesky.co.uk" "" ">"
+and
+Matthew Flaschen <\c
+.MTO "matthew.flaschen\(atgatech.edu" "" ">."
+.SH "RESOURCES"
+.sp
+\fBGit source repository on GitHub:\fP \c
+.URL "https://github.com/GarkGarcia/tikzin" "" ""
+.SH "COPYING"
+.sp
+Copyright (C) 2020 Pablo Emílio Escobar Gaviria
+Free use of this software is granted under the terms of the GPL\-2 License.
