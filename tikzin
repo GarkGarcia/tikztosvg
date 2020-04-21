@@ -10,6 +10,7 @@ end
 
 function error -a msg code
     puts "ERROR" "$msg" red
+    exit $code
 end
 
 function message -a msg
@@ -34,30 +35,25 @@ end
 
 if test -z ""(command -s xelatex)
     error "xelatex could not be found"
-    return 1
 end
 
 if test -z ""(command -s pdf2svg)
     error "pdf2svg could not be found"
-    return 1
 end
 
 argparse -i h/help q/quiet o/output= p/package=+ -- $argv
 
 if test -n "$_flag_help"
     man tikzin
-    return 0
 end
 
 switch (count $argv)
     case 0
         error "No input path provided"
-        return 1
     case 1
         set input $argv[1]
     case *
         error "Too many arguments: \""$argv[1..-1]"\""
-        return 1
 end
 
 if test -z "$_flag_output"
@@ -81,7 +77,6 @@ set s $status
 if test $s -ne 0
     rm $temp_dir -r
     error "xelatex exited with code $s" $s
-    return $s
 end
 
 if test -z "$_flag_quiet"
@@ -94,7 +89,6 @@ set s $status
 if test $s -ne 0
     rm $temp_dir -r
     error "pdf2svg exited with code $s" $s
-    return $s
 end
 
 if test -z "$_flag_quiet"
