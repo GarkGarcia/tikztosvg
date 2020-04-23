@@ -43,7 +43,7 @@ Let's say you want to convert the file `exemple.tikz` to SVG:
 You could achieve that by runned the following command:
 
 ----
-tikzit -p tikz-cd -p xfrac example.tikz
+tikzin -p tikz-cd -p xfrac example.tikz
 ----
 
 The results will be stored in the file `example.svg`:
