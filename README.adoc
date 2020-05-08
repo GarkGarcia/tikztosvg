@@ -59,6 +59,9 @@ running:
 $ curl -s https://raw.githubusercontent.com/GarkGarcia/tikzin/master/install.sh | sudo sh
 ----
 
+The executable is installed in `$HOME/.local/bin/` and the man-page is 
+installed in `$HOME/.local/share/man/man1/`.
+
 == Authors
 
 *Tikzin* was written by 
