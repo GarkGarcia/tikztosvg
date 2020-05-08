@@ -45,6 +45,7 @@ argparse -i h/help q/quiet o/output= p/package=+ -- $argv
 
 if test -n "$_flag_help"
     man tikzin
+    exit 0
 end
 
 switch (count $argv)
