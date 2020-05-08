@@ -1,9 +1,19 @@
+error ()
+{
+    echo "ERROR: $1"
+    exit 1
+}
+
 dependecyError () 
 {
     echo "ERROR: The command '$1' could not be found."
     echo "Please make sure it is included in the \$PATH enviroment variable or follow the installation instructions on $2."
     exit 1
 }
+
+if [ "$(id -u)" -ne "0" ]; then
+    error "This script requires administrative permissions"
+fi
 
 if [ -z "$(which fish)" ]; then
     dependencyError "fish" "https://fishshell.com/"

@@ -50,6 +50,15 @@ The results will be stored in the file `example.svg`:
 
 image::example.svg[]
 
+== Installation
+
+The `tikzin(1)` command and it's man page can be installed in Unix systems by 
+running:
+
+----
+$ curl -s https://raw.githubusercontent.com/GarkGarcia/tikzin/master/install.sh | sudo sh
+----
+
 == Authors
 
 *Tikzin* was written by 
