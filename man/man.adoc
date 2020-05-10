@@ -1,12 +1,12 @@
 = tikzin(1)
 :doctype: manpage
 :man manual: Tikzin Manual
-:man source: Tikzin 0.1.0
+:man source: Tikzin 0.1.1
 :page-layout: base
 
 == NAME
 
-tikzin - Renders TikZ diagrams to SVG.
+tikzin - Render TikZ diagrams to SVG.
 
 == SYNOPSIS
 
@@ -31,6 +31,9 @@ The tikzin(1) command renders TikZ diagrams to SVG.
 
 *-h, --help*::
   Print a help message.
+
+*-v, --version*::
+  Prints version information.
 
 == ENVIRONMENT
 

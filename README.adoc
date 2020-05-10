@@ -40,7 +40,7 @@ Let's say you want to convert the file `exemple.tikz` to SVG:
 \end{tikzcd}
 ----
 
-You could achieve that by runned the following command:
+You could achieve that by running the following command:
 
 ----
 tikzin -p tikz-cd -p xfrac example.tikz
