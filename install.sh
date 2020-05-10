@@ -33,7 +33,7 @@ if [ -f $HOME/.local/bin/tikzin ]; then
     rm $HOME/.local/bin/tikzin
 fi
 
-wget https://raw.githubusercontent.com/GarkGarcia/tikzin/master/tikzin -P $HOME/.local/bin/
+wget https://raw.githubusercontent.com/GarkGarcia/tikzin/master/bin/tikzin -P $HOME/.local/bin/
 
 if [ "$?" -ne "0" ]; then
     exit 1
@@ -45,7 +45,7 @@ man "tikzin" > /dev/null 2>&1
 if [ "$?" -ne "0" ]; then
     tmp="$(mktemp -d)"
     printf "INSTALLING MANUAL ENTRY FOR tikzin(1):\n\n"
-    wget https://raw.githubusercontent.com/GarkGarcia/tikzin/master/manpage/tikzin.1 -P "$tmp"
+    wget https://raw.githubusercontent.com/GarkGarcia/tikzin/master/man/tikzin.1 -P "$tmp"
     install -g 0 -o 0 -m 0644 "$tmp/tikzin.1" $HOME/.local/share/man/man1/
     
     if [ "$?" -ne "0" ]; then
