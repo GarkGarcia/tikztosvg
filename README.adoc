@@ -28,6 +28,9 @@ tikzin [OPTION]... INPUT_PATH
 *-h, --help*::
   Print a help message.
 
+*-v, --version*::
+  Print version information.
+
 == Example
 
 Let's say you want to convert the file `exemple.tikz` to SVG:
