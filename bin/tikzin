@@ -49,7 +49,7 @@ if test -n "$_flag_help"
 end
 
 if test -n "$_flag_version"
-    echo "0.1.1"
+    echo "0.1.2"
     exit 0
 end
 

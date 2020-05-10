@@ -1,7 +1,7 @@
 = tikzin(1)
 :doctype: manpage
 :man manual: Tikzin Manual
-:man source: Tikzin 0.1.1
+:man source: Tikzin 0.1.2
 :page-layout: base
 
 == NAME
@@ -20,8 +20,8 @@ The tikzin(1) command renders TikZ diagrams to SVG.
 
 *-o, --output*=_OUTPUT_PATH_::
   Write output to file _OUTPUT_PATH_.
-  Defaults to the base name of the input file suffixed with _.svg_ extension.
-  The file is resolved relative to the working directory.
+  Defaults to the base name of the input file suffixed with the _.svg_ 
+  extension. The file is resolved relative to the working directory.
 
 *-p, --package*=+_PACKAGE_::
   Include _\usepackage{PACKAGE}_ when rendering the diagram.

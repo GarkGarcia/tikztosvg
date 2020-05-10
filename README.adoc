@@ -16,8 +16,8 @@ tikzin [OPTION]... INPUT_PATH
 
 *-o, --output*=_OUTPUT_PATH_::
   Write output to file _OUTPUT_PATH_.
-  Defaults to the base name of the input file suffixed with _.svg_ extension.
-  The file is resolved relative to the working directory.
+  Defaults to the base name of the input file suffixed with the _.svg_ 
+  extension. The file is resolved relative to the working directory.
 
 *-p, --package*=+_PACKAGE_::
   Include ``\usepackage{_PACKAGE_}`` when rendering the diagram.
