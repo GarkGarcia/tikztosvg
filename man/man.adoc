@@ -1,20 +1,20 @@
-= tikzin(1)
+= tikzsvg(1)
 :doctype: manpage
-:man manual: Tikzin Manual
-:man source: Tikzin 0.1.2
+:man manual: TikzToSvg Manual
+:man source: TikzToSvg 0.1.0
 :page-layout: base
 
 == NAME
 
-tikzin - Render TikZ diagrams to SVG.
+tikzsvg - Render TikZ diagrams to SVG.
 
 == SYNOPSIS
 
-*tikzin* [_OPTION_]... _INPUT_PATH_
+*tikzsvg* [_OPTION_]... _INPUT_PATH_
 
 == DESCRIPTION
 
-The tikzin(1) command renders TikZ diagrams to SVG.
+The tikzsvg(1) command renders TikZ diagrams to SVG.
 
 == OPTIONS
 
@@ -37,7 +37,7 @@ The tikzin(1) command renders TikZ diagrams to SVG.
 
 == ENVIRONMENT
 
-*Tikzin* requires _fish_, _texlive_ and _pdf2svg_ to be installed. Make sure 
+*TikzToSvg* requires _fish_, _texlive_ and _pdf2svg_ to be installed. Make sure 
 any additional LaTeX packages are installed before using them in a diagram.
 
 == EXIT STATUS
@@ -53,7 +53,7 @@ any additional LaTeX packages are installed before using them in a diagram.
 
 == AUTHORS
 
-*Tikzin* was written by Pablo Emílio Escobar Gavira <pablo-escobar@riseup.net>.
+*TikzToSvg* was written by Pablo Emílio Escobar Gavira <pablo-escobar@riseup.net>.
 
 *TeX Live* has been developed since 1996 by collaboration between the TeX user 
 groups. TeX Live was originally perpetrated by Sebastian Rahtz. Present 
@@ -65,7 +65,7 @@ Matthew Flaschen <matthew.flaschen@gatech.edu>.
 
 == RESOURCES
 
-*Git source repository on GitHub:* https://github.com/GarkGarcia/tikzin
+*Git source repository on GitHub:* https://github.com/GarkGarcia/tikzsvg
 
 == COPYING
 

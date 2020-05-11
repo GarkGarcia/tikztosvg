@@ -1,15 +1,15 @@
-= tikzin(1)
+= tikztosvg(1)
 Pablo Emílio Escobar Gaviria <pablo-escobar@riseup.net>
 :imagesdir: example
 
-The `tikzin(1)` command renders TikZ diagrams to SVG, using 
+The `tikztosvg(1)` command renders TikZ diagrams to SVG, using 
 https://fishshell.com/[`fish`], https://tug.org/texlive/[`texlive`] and 
 https://github.com/dawbarton/pdf2svg[`pdf2svg`].
 
 == Usage
 
 ----
-tikzin [OPTION]... INPUT_PATH
+tikztosvg [OPTION]... INPUT_PATH
 ----
 
 === Options
@@ -46,7 +46,7 @@ Let's say you want to convert the file `exemple.tikz` to SVG:
 You could achieve that by running the following command:
 
 ----
-tikzin -p tikz-cd -p xfrac example.tikz
+tikztosvg -p tikz-cd -p xfrac example.tikz
 ----
 
 The results will be stored in the file `example.svg`:
@@ -55,11 +55,11 @@ image::example.svg[]
 
 == Installation
 
-The `tikzin(1)` command and it's man page can be installed in Unix systems by 
+The `tikztosvg(1)` command and it's man page can be installed in Unix systems by 
 running:
 
 ----
-$ curl -s https://raw.githubusercontent.com/GarkGarcia/tikzin/master/install.sh | sudo sh
+$ curl -s https://raw.githubusercontent.com/GarkGarcia/tikztosvg/master/install.sh | sudo sh
 ----
 
 The executable is installed in `$HOME/.local/bin/` and the man-page is 
@@ -67,7 +67,7 @@ installed in `$HOME/.local/share/man/man1/`.
 
 == Authors
 
-*Tikzin* was written by 
+*TikzToSvg* was written by 
 mailto:pablo-escobar@riseup.net[Pablo Emílio Escobar Gavira].
 
 *TeX Live* has been developed since 1996 by collaboration between the TeX user 

@@ -2,12 +2,12 @@
 
 puts() 
 {
-    printf "[%s] %s\r\n" "$1" "$2"
+    echo "[$1] $2"
 }
 
 error()
 {
-    puts "ERROR" "$1"
+    puts "ERROR" "$1" r
 
     if [ -n "$2" ]
     then
@@ -19,7 +19,7 @@ error()
 
 message()
 {
-    puts "TIKZTOSVG" "$1"
+    puts "TIKZTOSVG" "$1" g
 }
 
 if [ -z "$(which xelatex)" ]
@@ -42,7 +42,7 @@ do
             exit 0
             ;;
         -v|--version)
-            echo 0.1.2
+            echo 0.1.0
             exit 0
             ;;
         -p|--package)
@@ -72,6 +72,7 @@ do
             ;;
         -q|--quit)
             QUIET=1
+            shift
             ;;
         *) 
             error "Unexpected token: \"$1\""
