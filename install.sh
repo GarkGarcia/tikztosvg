@@ -33,7 +33,7 @@ if [ -f $HOME/.local/bin/tikztosvg ]; then
     rm $HOME/.local/bin/tikztosvg
 fi
 
-wget https://raw.githubusercontent.com/GarkGarcia/tikztosvg/master/bin/tikztosvg -P $HOME/.local/bin/
+wget https://raw.githubusercontent.com/GarkGarcia/tikztosvg/master/tikztosvg -P $HOME/.local/bin/
 
 if [ "$?" -ne "0" ]; then
     exit 1
