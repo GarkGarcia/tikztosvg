@@ -22,6 +22,18 @@ message()
     puts "TIKZTOSVG" "$1" g
 }
 
+show_help()
+{
+    man tikztosvg
+    exit 0
+}
+
+show_version()
+{
+    echo 0.1.0
+    exit 0
+}
+
 if [ -z "$(which xelatex)" ]
 then
     error "xelatex could not be found"
@@ -38,12 +50,10 @@ while [ $# -gt 1 ]
 do
     case "$1" in
         -h|--help)
-            man tikztosvg
-            exit 0
+            show_help
             ;;
         -v|--version)
-            echo 0.1.0
-            exit 0
+            show_version
             ;;
         -p|--package)
             if [ -z "$2" ]
@@ -80,12 +90,19 @@ do
     esac
 done
 
-INPUT="$1"
-
-if [ -z "$INPUT" ]
-then
-    error "No input path provided"
-fi
+case "$1" in
+    -h|--help)
+        show_help
+        ;;
+    -v|--version)
+        show_version
+        ;;
+    "")
+        error "No input path provided"
+        ;;
+    *)
+        INPUT="$1"
+esac
 
 if [ -z "$OUTPUT" ]
 then
