@@ -3,7 +3,7 @@ Pablo Emílio Escobar Gaviria <pablo-escobar@riseup.net>
 :imagesdir: example
 
 The `tikztosvg(1)` command renders TikZ diagrams to SVG, using 
-https://www.gnu.org/software/bash//[`bash`], https://tug.org/texlive/[`texlive`] and 
+https://www.gnu.org/software/bash//[`bash`], http://xetex.sourceforge.net/[`xetex`] and 
 https://github.com/dawbarton/pdf2svg[`pdf2svg`].
 
 == Usage
@@ -69,11 +69,6 @@ installed in `$HOME/.local/share/man/man1/`.
 
 *TikzToSvg* was written by 
 mailto:pablo-escobar@riseup.net[Pablo Emílio Escobar Gavira].
-
-*TeX Live* has been developed since 1996 by collaboration between the TeX user 
-groups. TeX Live was originally perpetrated by Sebastian Rahtz. Present 
-miscreants include Akira Kakuto, Karl Berry, Luigi Scarso, Mojca Miklavec, 
-Norbert Preining, Reinhard Kotucha, Siep Kroonenberg, and a cast of thousands.
 
 *pdf2svg* was written by mailto:davebarton@cityinthesky.co.uk[David Barton] and 
 mailto:matthew.flaschen@gatech.edu[Matthew Flaschen].

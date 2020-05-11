@@ -37,7 +37,7 @@ The tikzsvg(1) command renders TikZ diagrams to SVG.
 
 == ENVIRONMENT
 
-*TikzToSvg* requires _bash_, _texlive_ and _pdf2svg_ to be installed. Make sure 
+*TikzToSvg* requires _bash_, _xetex_ and _pdf2svg_ to be installed. Make sure 
 any additional LaTeX packages are installed before using them in a diagram.
 
 == EXIT STATUS
@@ -54,11 +54,6 @@ any additional LaTeX packages are installed before using them in a diagram.
 == AUTHORS
 
 *TikzToSvg* was written by Pablo Emílio Escobar Gavira <pablo-escobar@riseup.net>.
-
-*TeX Live* has been developed since 1996 by collaboration between the TeX user 
-groups. TeX Live was originally perpetrated by Sebastian Rahtz. Present 
-miscreants include Akira Kakuto, Karl Berry, Luigi Scarso, Mojca Miklavec, 
-Norbert Preining, Reinhard Kotucha, Siep Kroonenberg, and a cast of thousands.
 
 *pdf2svg* was written by David Barton <davebarton@cityinthesky.co.uk> and 
 Matthew Flaschen <matthew.flaschen@gatech.edu>.
