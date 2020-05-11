@@ -22,13 +22,13 @@ message()
     puts "TIKZTOSVG" "$1" g
 }
 
-show_help()
+showHelp()
 {
     man tikztosvg
     exit 0
 }
 
-show_version()
+showVersion()
 {
     echo 0.1.0
     exit 0
@@ -50,10 +50,10 @@ while [ $# -gt 1 ]
 do
     case "$1" in
         -h|--help)
-            show_help
+            showHelp
             ;;
         -v|--version)
-            show_version
+            showVersion
             ;;
         -p|--package)
             if [ -z "$2" ]
@@ -92,10 +92,10 @@ done
 
 case "$1" in
     -h|--help)
-        show_help
+        showHelp
         ;;
     -v|--version)
-        show_version
+        showVersion
         ;;
     "")
         error "No input path provided"
