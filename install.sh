@@ -15,8 +15,8 @@ if [ "$(id -u)" -ne "0" ]; then
     error "This script requires administrator-privileges"
 fi
 
-if [ -z "$(which fish)" ]; then
-    dependencyError "fish" "https://fishshell.com/"
+if [ -z "$(which bash)" ]; then
+    dependencyError "bash" "https://www.gnu.org/software/bash//"
 fi
 
 if [ -z "$(which xelatex)" ]; then

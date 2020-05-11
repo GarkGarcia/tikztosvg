@@ -3,7 +3,7 @@ Pablo Emílio Escobar Gaviria <pablo-escobar@riseup.net>
 :imagesdir: example
 
 The `tikztosvg(1)` command renders TikZ diagrams to SVG, using 
-https://fishshell.com/[`fish`], https://tug.org/texlive/[`texlive`] and 
+https://www.gnu.org/software/bash//[`bash`], https://tug.org/texlive/[`texlive`] and 
 https://github.com/dawbarton/pdf2svg[`pdf2svg`].
 
 == Usage
