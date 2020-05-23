@@ -2,8 +2,12 @@
 Pablo Emílio Escobar Gaviria <pablo-escobar@riseup.net>
 :imagesdir: example
 
+image:https://img.shields.io/github/v/release/GarkGarcia/tikztosvg[link=https://github.com/GarkGarcia/tikztosvg/releases]
+image:https://img.shields.io/ctan/v/tikztosvg[link=https://www.ctan.org/pkg/tikztosvg]
+
 The `tikztosvg(1)` command renders TikZ diagrams to SVG, using 
-https://www.gnu.org/software/bash/[`bash`], http://xetex.sourceforge.net/[`xetex`] and 
+https://www.gnu.org/software/bash/[`bash`], 
+http://xetex.sourceforge.net/[`xetex`] and 
 https://github.com/dawbarton/pdf2svg[`pdf2svg`].
 
 == Usage
