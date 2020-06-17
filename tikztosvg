@@ -106,7 +106,15 @@ esac
 
 if [ -z "$OUTPUT" ]
 then
-    OUTPUT="$(echo $(basename $INPUT) | cut -d "." -f1)"
+    # If no output path is provided, use the basename of the input
+    OUTPUT="$(dirname $INPUT)/$(echo $(basename $INPUT) | cut -d "." -f1).svg"
+else
+    # If the output path is provided, but it resolves to directory, output a 
+    # with the same basename as the input in the target directory
+    if  [ "$OUTPUT" =~ /$ ]
+    then
+        OUTPUT="$OUTPUT$(echo $(basename $INPUT) | cut -d "." -f1).svg"
+    fi
 fi
 
 TEMP_DIR="$(mktemp -d)"
