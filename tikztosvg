@@ -30,7 +30,7 @@ showHelp()
 
 showVersion()
 {
-    echo 0.1.0
+    echo 0.1.1
     exit 0
 }
 
@@ -107,13 +107,13 @@ esac
 if [ -z "$OUTPUT" ]
 then
     # If no output path is provided, use the basename of the input
-    OUTPUT="$(dirname $INPUT)/$(echo $(basename $INPUT) | cut -d "." -f1).svg"
+    OUTPUT="$(dirname "$INPUT")/$(echo $(basename "$INPUT") | cut -d "." -f1).svg"
 else
     # If the output path is provided, but it resolves to directory, output a 
     # with the same basename as the input in the target directory
-    if  [ "$OUTPUT" =~ /$ ]
+    if  [[ "$OUTPUT" =~ /$ ]]
     then
-        OUTPUT="$OUTPUT$(echo $(basename $INPUT) | cut -d "." -f1).svg"
+        OUTPUT="$OUTPUT$(echo $(basename "$INPUT") | cut -d "." -f1).svg"
     fi
 fi
 
@@ -131,7 +131,7 @@ done
 echo "\begin{document}" >> $TEX_FILE
 echo "\huge" >> $TEX_FILE
 
-cat $INPUT >> $TEX_FILE
+cat "$INPUT" >> $TEX_FILE
 
 if [ $? -ne 0 ]
 then
