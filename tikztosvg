@@ -11,7 +11,7 @@ error()
 
     if [ -n "$2" ]
     then
-        exit $2
+        exit "$2"
     else
         exit 1
     fi
@@ -69,7 +69,7 @@ do
             if [ -n "$OUTPUT" ]
             then
                 error "The output path was specified multiple times"
-            else if [ -z "$2" ]
+            elif [ -z "$2" ]
             then
                 error "Unexpected EOF"
                 exit 1
@@ -77,7 +77,6 @@ do
                 OUTPUT="$2"
                 shift
                 shift
-            fi
             fi
             ;;
         -q|--quit)
@@ -107,13 +106,13 @@ esac
 if [ -z "$OUTPUT" ]
 then
     # If no output path is provided, use the basename of the input
-    OUTPUT="$(dirname "$INPUT")/$(echo $(basename "$INPUT") | cut -d "." -f1).svg"
+    OUTPUT="$(dirname "$INPUT")/$(basename "$INPUT" | cut -d "." -f1).svg"
 else
     # If the output path is provided, but it resolves to directory, output a 
     # with the same basename as the input in the target directory
     if  [[ "$OUTPUT" =~ /$ ]]
     then
-        OUTPUT="$OUTPUT$(echo $(basename "$INPUT") | cut -d "." -f1).svg"
+        OUTPUT="$OUTPUT$(basename "$INPUT" | cut -d "." -f1).svg"
     fi
 fi
 
@@ -121,38 +120,36 @@ TEMP_DIR="$(mktemp -d)"
 TEX_FILE="$TEMP_DIR/tmp.tex"
 
 # Generate the LaTeX document
-echo "\documentclass[crop,tikz,multi=false]{standalone}" > $TEX_FILE
+echo "\documentclass[crop,tikz,multi=false]{standalone}" > "$TEX_FILE"
 
 for PACKAGE in "${PACKAGES[@]}"
 do
-    echo "\usepackage{$PACKAGE}" >> $TEX_FILE
+    echo "\usepackage{$PACKAGE}" >> "$TEX_FILE"
 done
 
-echo "\begin{document}" >> $TEX_FILE
-echo "\huge" >> $TEX_FILE
-
-cat "$INPUT" >> $TEX_FILE
+echo "\begin{document} \huge" >> "$TEX_FILE"
+cat "$INPUT" >> "$TEX_FILE"
 
 if [ $? -ne 0 ]
 then
-    rm $TEMP_DIR -r
+    rm "$TEMP_DIR" -r
     error "File not found: $INPUT"
 fi
 
-echo "\end{document}" >> $TEX_FILE
+echo "\end{document}" >> "$TEX_FILE"
 
 if [ -z "$QUIET" ]
 then
     message "Rendering the LaTeX document. . ."
-    xelatex -output-directory=$TEMP_DIR $TEX_FILE
+    xelatex -output-directory="$TEMP_DIR" "$TEX_FILE"
 else
-    xelatex -halt-on-error -output-directory=$TEMP_DIR $TEX_FILE 1> /dev/null 2>&1
+    xelatex -halt-on-error -output-directory="$TEMP_DIR" "$TEX_FILE" 1> /dev/null 2>&1
 fi
 
 S=$?
 if [ $S -ne 0 ]
 then
-    rm $TEMP_DIR -r
+    rm "$TEMP_DIR" -r
     if [ -z "$QUIET" ]
     then
         error "xelatex exited with code $S" $S
@@ -166,12 +163,12 @@ then
     message "Converting the output to SVG. . ."
 fi
 
-pdf2svg "$TEMP_DIR/tmp.pdf" $OUTPUT 1
+pdf2svg "$TEMP_DIR/tmp.pdf" "$OUTPUT" 1
 
 S=$?
 if [ $S -ne 0 ]
 then
-    rm $TEMP_DIR -r
+    rm "$TEMP_DIR" -r
     if [ -z "$QUIET" ]
     then
         error "pdf2svg exited with code $S" $S
