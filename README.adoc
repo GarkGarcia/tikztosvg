@@ -17,10 +17,13 @@ https://github.com/dawbarton/pdf2svg[`pdf2svg`].
 tikztosvg [OPTION]... INPUT_PATH
 ----
 
+If `INPUT_PATH` is set to `-` the input will be read from stdin.
+
 === Options
 
 *-o, --output*=_OUTPUT_PATH_::
   Write output to file _OUTPUT_PATH_.
+  If set to `-` the output will be written to stdout.
   Defaults to the base name of the input file suffixed with the _.svg_ 
   extension. The file is resolved relative to the working directory.
 
