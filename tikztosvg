@@ -1,13 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 
 puts() 
 {
-    echo "[$1] $2"
+    printf "[%s] %s\n" "$1" "$2"
 }
 
 error()
 {
-    puts "ERROR" "$1" r
+    puts "ERROR" "$1"
 
     if [ -n "$2" ]
     then
@@ -19,7 +19,7 @@ error()
 
 message()
 {
-    puts "TIKZTOSVG" "$1" g
+    puts "TIKZTOSVG" "$1"
 }
 
 showHelp()
@@ -45,7 +45,7 @@ then
 fi
 
 # Parsing the arguments
-PACKAGES=()
+PACKAGES=""
 while [ $# -gt 1 ]
 do
     case "$1" in
@@ -60,7 +60,7 @@ do
             then
                 error "Unnexpected EOF"
             else
-                PACKAGES+=("$2")
+                PACKAGES="$PACKAGES $2"
                 shift
                 shift
             fi
@@ -72,7 +72,6 @@ do
             elif [ -z "$2" ]
             then
                 error "Unexpected EOF"
-                exit 1
             else
                 OUTPUT="$2"
                 shift
@@ -103,31 +102,31 @@ case "$1" in
         INPUT="$1"
 esac
 
-if [ -z "$OUTPUT" ]
-then
+case "$OUTPUT" in
     # If no output path is provided, use the basename of the input
-    OUTPUT="$(dirname "$INPUT")/$(basename "$INPUT" | cut -d "." -f1).svg"
-else
+    "") 
+        OUTPUT="$(dirname "$INPUT")/$(basename "$INPUT" | cut -d "." -f1).svg" 
+        ;;
+
     # If the output path is provided, but it resolves to directory, output a 
-    # with the same basename as the input in the target directory
-    if  [[ "$OUTPUT" =~ /$ ]]
-    then
-        OUTPUT="$OUTPUT$(basename "$INPUT" | cut -d "." -f1).svg"
-    fi
-fi
+    # a file with the same basename as the input in the target directory
+    */) 
+        OUTPUT="$OUTPUT$(basename "$INPUT" | cut -d "." -f1).svg" 
+        ;;
+esac
 
 TEMP_DIR="$(mktemp -d)"
 TEX_FILE="$TEMP_DIR/tmp.tex"
 
 # Generate the LaTeX document
-echo "\documentclass[crop,tikz,multi=false]{standalone}" > "$TEX_FILE"
+printf "\documentclass[crop,tikz,multi=false]{standalone}\n" > "$TEX_FILE"
 
-for PACKAGE in "${PACKAGES[@]}"
+for PACKAGE in $PACKAGES
 do
-    echo "\usepackage{$PACKAGE}" >> "$TEX_FILE"
+    printf "\usepackage{$PACKAGE}\n" >> "$TEX_FILE"
 done
 
-echo "\begin{document} \huge" >> "$TEX_FILE"
+printf "\\\begin{document} \huge\n" >> "$TEX_FILE"
 cat "$INPUT" >> "$TEX_FILE"
 
 if [ $? -ne 0 ]
@@ -136,7 +135,7 @@ then
     error "File not found: $INPUT"
 fi
 
-echo "\end{document}" >> "$TEX_FILE"
+printf "\\\end{document}\n" >> "$TEX_FILE"
 
 if [ -z "$QUIET" ]
 then
