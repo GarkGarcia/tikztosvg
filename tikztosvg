@@ -60,9 +60,15 @@ do
             then
                 error "Unnexpected EOF"
             else
-                PACKAGES="$PACKAGES $2"
-                shift
-                shift
+                case "$2" in
+                    *" "*) 
+                        error "Invalid package name. LaTeX package names cannot contain scapes!" 
+                        ;;
+                    *)
+                        PACKAGES="$PACKAGES $2"
+                        shift
+                        shift
+                esac
             fi
             ;;
         -o|--output)
