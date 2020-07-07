@@ -109,8 +109,15 @@ case "$1" in
         INPUT="$1"
 esac
 
+TEMP_DIR="$(mktemp -d)"
+
 # Fix the output path is basename and cut are installed
-if [ -x "$(command -v basename)" ] && [ -x "$(command -v cut)" ]
+if [ "$OUTPUT" = "-" ]
+then
+    STDOUT=1
+    QUIET=1
+    OUTPUT="$TEMP_DIR/tmp.svg"
+elif [ -x "$(command -v basename)" ] && [ -x "$(command -v cut)" ]
 then
     case "$OUTPUT" in
         # If no output path is provided, use the basename of the input
@@ -129,10 +136,10 @@ then
     esac
 elif [ -z "$OUTPUT" ]
 then
+    rm "$TEMP_DIR" -r
     error "No output path provided"
 fi
 
-TEMP_DIR="$(mktemp -d)"
 TEX_FILE="$TEMP_DIR/tmp.tex"
 
 # Generate the LaTeX document
@@ -196,6 +203,11 @@ fi
 if [ -z "$QUIET" ]
 then
     message "Done!"
+fi
+
+if [ -n "$STDOUT" ]
+then
+    cat "$OUTPUT"
 fi
 
 rm "$TEMP_DIR" -r
