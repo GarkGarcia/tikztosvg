@@ -40,7 +40,7 @@ If _INPUT_PATH_ is set to _-_ the input will be read from stdin.
 
 == ENVIRONMENT
 
-*TikzToSvg* requires _bash_, _xetex_ and _pdf2svg_ to be installed. Make sure 
+*TikzToSvg* requires _xetex_ and _pdf2svg_ to be installed. Make sure 
 any additional LaTeX packages are installed before using them in a diagram.
 
 == EXIT STATUS

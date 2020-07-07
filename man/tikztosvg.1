@@ -2,12 +2,12 @@
 .\"     Title: tikzsvg
 .\"    Author: [see the "AUTHOR(S)" section]
 .\" Generator: Asciidoctor 2.0.10
-.\"      Date: 2020-06-17
+.\"      Date: 2020-07-07
 .\"    Manual: TikzToSvg Manual
-.\"    Source: TikzToSvg 0.1.1
+.\"    Source: TikzToSvg 0.2.0
 .\"  Language: English
 .\"
-.TH "TIKZSVG" "1" "2020-06-17" "TikzToSvg 0.1.1" "TikzToSvg Manual"
+.TH "TIKZSVG" "1" "2020-07-07" "TikzToSvg 0.2.0" "TikzToSvg Manual"
 .ie \n(.g .ds Aq \(aq
 .el       .ds Aq '
 .ss \n[.ss] 0
@@ -35,11 +35,14 @@ tikzsvg \- Render TikZ diagrams to SVG.
 .SH "DESCRIPTION"
 .sp
 The tikzsvg(1) command renders TikZ diagrams to SVG.
+.sp
+If \fIINPUT_PATH\fP is set to \fI\-\fP the input will be read from stdin.
 .SH "OPTIONS"
 .sp
 \fB\-o, \-\-output\fP=\fIOUTPUT_PATH\fP
 .RS 4
 Write output to file \fIOUTPUT_PATH\fP.
+If set to \fI\-\fP the output will be written to stdout.
 Defaults to the base name of the input file suffixed with the \fI.svg\fP
 extension. The file is resolved relative to the working directory.
 .RE
@@ -65,7 +68,7 @@ Prints version information.
 .RE
 .SH "ENVIRONMENT"
 .sp
-\fBTikzToSvg\fP requires \fIbash\fP, \fIxetex\fP and \fIpdf2svg\fP to be installed. Make sure
+\fBTikzToSvg\fP requires \fIxetex\fP and \fIpdf2svg\fP to be installed. Make sure
 any additional LaTeX packages are installed before using them in a diagram.
 .SH "EXIT STATUS"
 .sp

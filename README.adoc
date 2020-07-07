@@ -7,7 +7,6 @@ image:https://img.shields.io/ctan/v/tikztosvg[link=https://www.ctan.org/pkg/tikz
 image:https://img.shields.io/github/license/GarkGarcia/tikztosvg[link=https://github.com/GarkGarcia/tikztosvg/blob/master/LICENSE]
 
 The `tikztosvg(1)` command renders TikZ diagrams to SVG, using 
-https://www.gnu.org/software/bash/[`bash`], 
 http://xetex.sourceforge.net/[`xetex`] and 
 https://github.com/dawbarton/pdf2svg[`pdf2svg`].
 

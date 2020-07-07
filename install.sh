@@ -15,15 +15,11 @@ if [ "$(id -u)" -ne "0" ]; then
     error "This script requires administrator-privileges"
 fi
 
-if [ -z "$(which bash)" ]; then
-    dependencyError "bash" "https://www.gnu.org/software/bash//"
-fi
-
-if [ -z "$(which xelatex)" ]; then
+if ! [ -x "$(command -v xelatex)" ]; then
     dependencyError "xelatex" "https://tug.org/texlive/"
 fi
 
-if [ -z "$(which pdf2svg)" ]; then
+if ! [ -x "$(command -v pdf2svg)" ]; then
     dependencyError "pdf2svg" "https://github.com/dawbarton/pdf2svg"
 fi
 
