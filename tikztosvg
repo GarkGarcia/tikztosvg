@@ -95,6 +95,8 @@ do
     esac
 done
 
+TEMP_DIR="$(mktemp -d)"
+
 case "$1" in
     -h|--help)
         showHelp
@@ -103,13 +105,16 @@ case "$1" in
         showVersion
         ;;
     "")
+        rm "$TEMP_DIR" -r
         error "No input path provided"
+        ;;
+    "-")
+        INPUT="$TEMP_DIR/tmp.tikz"
+        cp /dev/stdin "$INPUT"
         ;;
     *)
         INPUT="$1"
 esac
-
-TEMP_DIR="$(mktemp -d)"
 
 # Fix the output path is basename and cut are installed
 if [ "$OUTPUT" = "-" ]
