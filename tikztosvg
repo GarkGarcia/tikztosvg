@@ -95,8 +95,6 @@ do
     esac
 done
 
-TEMP_DIR="$(mktemp -d)"
-
 case "$1" in
     -h|--help)
         showHelp
@@ -105,46 +103,38 @@ case "$1" in
         showVersion
         ;;
     "")
-        rm "$TEMP_DIR" -r
         error "No input path provided"
         ;;
     "-")
-        INPUT="$TEMP_DIR/tmp.tikz"
-        cp /dev/stdin "$INPUT"
+        INPUT=/dev/stdin
         ;;
     *)
         INPUT="$1"
 esac
 
-# Fix the output path is basename and cut are installed
-if [ "$OUTPUT" = "-" ]
-then
-    STDOUT=1
-    QUIET=1
-    OUTPUT="$TEMP_DIR/tmp.svg"
-elif [ -x "$(command -v basename)" ] && [ -x "$(command -v cut)" ]
-then
-    case "$OUTPUT" in
-        # If no output path is provided, use the basename of the input
-        "") 
-            if [ -x "$(command -v dirname)" ]
-            then
-                OUTPUT="$(dirname "$INPUT")/$(basename "$INPUT" | cut -d "." -f1).svg" 
-            fi
-            ;;
-    
-        # If the output path is provided, but it resolves to directory, output a 
-        # a file with the same basename as the input in the target directory
-        */) 
-            OUTPUT="$OUTPUT$(basename "$INPUT" | cut -d "." -f1).svg" 
-            ;;
-    esac
-elif [ -z "$OUTPUT" ]
-then
-    rm "$TEMP_DIR" -r
-    error "No output path provided"
-fi
+case "$OUTPUT" in
+    # Set the output to stdout
+    -)
+        QUIET=1
+        OUTPUT=/dev/stdout
+        ;;
 
+    # If no output path is provided, use the basename of the input
+    "") 
+        if [ -x "$(command -v dirname)" ]
+        then
+            OUTPUT="$(dirname "$INPUT")/$(basename "$INPUT" | cut -d "." -f1).svg" 
+        fi
+        ;;
+
+    # If the output path is provided, but it resolves to directory, output a 
+    # a file with the same basename as the input in the target directory
+    */) 
+        OUTPUT="$OUTPUT$(basename "$INPUT" | cut -d "." -f1).svg" 
+        ;;
+esac
+
+TEMP_DIR="$(mktemp -d)"
 TEX_FILE="$TEMP_DIR/tmp.tex"
 
 # Generate the LaTeX document
@@ -208,11 +198,6 @@ fi
 if [ -z "$QUIET" ]
 then
     message "Done!"
-fi
-
-if [ -n "$STDOUT" ]
-then
-    cat "$OUTPUT"
 fi
 
 rm "$TEMP_DIR" -r
