@@ -30,16 +30,16 @@ showHelp()
 
 showVersion()
 {
-    echo 0.1.1
+    echo 0.2.0
     exit 0
 }
 
-if [ -z "$(which xelatex)" ]
+if ! [ -x "$(command -v xelatex)" ]
 then
     error "xelatex could not be found"
 fi
 
-if [ -z "$(which pdf2svg)" ]
+if ! [ -x "$(command -v pdf2svg)" ]
 then
     error "pdf2svg could not be found"
 fi
@@ -61,6 +61,7 @@ do
                 error "Unnexpected EOF"
             else
                 case "$2" in
+                    # Check if the name of the package is valid
                     *" "*) 
                         error "Invalid package name. LaTeX package names cannot contain scapes!" 
                         ;;
@@ -108,18 +109,28 @@ case "$1" in
         INPUT="$1"
 esac
 
-case "$OUTPUT" in
-    # If no output path is provided, use the basename of the input
-    "") 
-        OUTPUT="$(dirname "$INPUT")/$(basename "$INPUT" | cut -d "." -f1).svg" 
-        ;;
-
-    # If the output path is provided, but it resolves to directory, output a 
-    # a file with the same basename as the input in the target directory
-    */) 
-        OUTPUT="$OUTPUT$(basename "$INPUT" | cut -d "." -f1).svg" 
-        ;;
-esac
+# Fix the output path is basename and cut are installed
+if [ -x "$(command -v basename)" ] && [ -x "$(command -v cut)" ]
+then
+    case "$OUTPUT" in
+        # If no output path is provided, use the basename of the input
+        "") 
+            if [ -x "$(command -v dirname)" ]
+            then
+                OUTPUT="$(dirname "$INPUT")/$(basename "$INPUT" | cut -d "." -f1).svg" 
+            fi
+            ;;
+    
+        # If the output path is provided, but it resolves to directory, output a 
+        # a file with the same basename as the input in the target directory
+        */) 
+            OUTPUT="$OUTPUT$(basename "$INPUT" | cut -d "." -f1).svg" 
+            ;;
+    esac
+elif [ -z "$OUTPUT" ]
+then
+    error "No output path provided"
+fi
 
 TEMP_DIR="$(mktemp -d)"
 TEX_FILE="$TEMP_DIR/tmp.tex"

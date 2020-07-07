@@ -1,7 +1,7 @@
 = tikzsvg(1)
 :doctype: manpage
 :man manual: TikzToSvg Manual
-:man source: TikzToSvg 0.1.1
+:man source: TikzToSvg 0.2.0
 :page-layout: base
 
 == NAME
